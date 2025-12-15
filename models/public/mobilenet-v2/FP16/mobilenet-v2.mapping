@@ -1,0 +1,411 @@
+<?xml version="1.0"?>
+<mapping>
+	<map>
+		<framework name="data" output_port_id="data" />
+		<IR name="data" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="conv1/bn/variance/Fused_Add_" output_port_id="conv1/bn" />
+		<IR name="conv1/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu1" output_port_id="conv1/bn" />
+		<IR name="relu1" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv2_1/expand/bn/variance/Fused_Add_" output_port_id="conv2_1/expand/bn" />
+		<IR name="conv2_1/expand/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu2_1/expand" output_port_id="conv2_1/expand/bn" />
+		<IR name="relu2_1/expand" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv2_1/dwise/bn/variance/Fused_Add_" output_port_id="conv2_1/dwise/bn" />
+		<IR name="conv2_1/dwise/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu2_1/dwise" output_port_id="conv2_1/dwise/bn" />
+		<IR name="relu2_1/dwise" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv2_1/linear/bn/variance/Fused_Add_" output_port_id="conv2_1/linear/bn" />
+		<IR name="conv2_1/linear/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="conv2_2/expand/bn/variance/Fused_Add_" output_port_id="conv2_2/expand/bn" />
+		<IR name="conv2_2/expand/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu2_2/expand" output_port_id="conv2_2/expand/bn" />
+		<IR name="relu2_2/expand" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv2_2/dwise/bn/variance/Fused_Add_" output_port_id="conv2_2/dwise/bn" />
+		<IR name="conv2_2/dwise/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu2_2/dwise" output_port_id="conv2_2/dwise/bn" />
+		<IR name="relu2_2/dwise" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv2_2/linear/bn/variance/Fused_Add_" output_port_id="conv2_2/linear/bn" />
+		<IR name="conv2_2/linear/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="conv3_1/expand/bn/variance/Fused_Add_" output_port_id="conv3_1/expand/bn" />
+		<IR name="conv3_1/expand/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu3_1/expand" output_port_id="conv3_1/expand/bn" />
+		<IR name="relu3_1/expand" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv3_1/dwise/bn/variance/Fused_Add_" output_port_id="conv3_1/dwise/bn" />
+		<IR name="conv3_1/dwise/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu3_1/dwise" output_port_id="conv3_1/dwise/bn" />
+		<IR name="relu3_1/dwise" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv3_1/linear/bn/variance/Fused_Add_" output_port_id="conv3_1/linear/bn" />
+		<IR name="conv3_1/linear/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="block_3_1" output_port_id="block_3_1" />
+		<IR name="block_3_1" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="conv3_2/expand/bn/variance/Fused_Add_" output_port_id="conv3_2/expand/bn" />
+		<IR name="conv3_2/expand/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu3_2/expand" output_port_id="conv3_2/expand/bn" />
+		<IR name="relu3_2/expand" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv3_2/dwise/bn/variance/Fused_Add_" output_port_id="conv3_2/dwise/bn" />
+		<IR name="conv3_2/dwise/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu3_2/dwise" output_port_id="conv3_2/dwise/bn" />
+		<IR name="relu3_2/dwise" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv3_2/linear/bn/variance/Fused_Add_" output_port_id="conv3_2/linear/bn" />
+		<IR name="conv3_2/linear/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="conv4_1/expand/bn/variance/Fused_Add_" output_port_id="conv4_1/expand/bn" />
+		<IR name="conv4_1/expand/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu4_1/expand" output_port_id="conv4_1/expand/bn" />
+		<IR name="relu4_1/expand" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv4_1/dwise/bn/variance/Fused_Add_" output_port_id="conv4_1/dwise/bn" />
+		<IR name="conv4_1/dwise/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu4_1/dwise" output_port_id="conv4_1/dwise/bn" />
+		<IR name="relu4_1/dwise" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv4_1/linear/bn/variance/Fused_Add_" output_port_id="conv4_1/linear/bn" />
+		<IR name="conv4_1/linear/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="block_4_1" output_port_id="block_4_1" />
+		<IR name="block_4_1" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="conv4_2/expand/bn/variance/Fused_Add_" output_port_id="conv4_2/expand/bn" />
+		<IR name="conv4_2/expand/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu4_2/expand" output_port_id="conv4_2/expand/bn" />
+		<IR name="relu4_2/expand" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv4_2/dwise/bn/variance/Fused_Add_" output_port_id="conv4_2/dwise/bn" />
+		<IR name="conv4_2/dwise/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu4_2/dwise" output_port_id="conv4_2/dwise/bn" />
+		<IR name="relu4_2/dwise" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv4_2/linear/bn/variance/Fused_Add_" output_port_id="conv4_2/linear/bn" />
+		<IR name="conv4_2/linear/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="block_4_2" output_port_id="block_4_2" />
+		<IR name="block_4_2" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="conv4_3/expand/bn/variance/Fused_Add_" output_port_id="conv4_3/expand/bn" />
+		<IR name="conv4_3/expand/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu4_3/expand" output_port_id="conv4_3/expand/bn" />
+		<IR name="relu4_3/expand" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv4_3/dwise/bn/variance/Fused_Add_" output_port_id="conv4_3/dwise/bn" />
+		<IR name="conv4_3/dwise/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu4_3/dwise" output_port_id="conv4_3/dwise/bn" />
+		<IR name="relu4_3/dwise" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv4_3/linear/bn/variance/Fused_Add_" output_port_id="conv4_3/linear/bn" />
+		<IR name="conv4_3/linear/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="conv4_4/expand/bn/variance/Fused_Add_" output_port_id="conv4_4/expand/bn" />
+		<IR name="conv4_4/expand/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu4_4/expand" output_port_id="conv4_4/expand/bn" />
+		<IR name="relu4_4/expand" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv4_4/dwise/bn/variance/Fused_Add_" output_port_id="conv4_4/dwise/bn" />
+		<IR name="conv4_4/dwise/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu4_4/dwise" output_port_id="conv4_4/dwise/bn" />
+		<IR name="relu4_4/dwise" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv4_4/linear/bn/variance/Fused_Add_" output_port_id="conv4_4/linear/bn" />
+		<IR name="conv4_4/linear/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="block_4_4" output_port_id="block_4_4" />
+		<IR name="block_4_4" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="conv4_5/expand/bn/variance/Fused_Add_" output_port_id="conv4_5/expand/bn" />
+		<IR name="conv4_5/expand/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu4_5/expand" output_port_id="conv4_5/expand/bn" />
+		<IR name="relu4_5/expand" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv4_5/dwise/bn/variance/Fused_Add_" output_port_id="conv4_5/dwise/bn" />
+		<IR name="conv4_5/dwise/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu4_5/dwise" output_port_id="conv4_5/dwise/bn" />
+		<IR name="relu4_5/dwise" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv4_5/linear/bn/variance/Fused_Add_" output_port_id="conv4_5/linear/bn" />
+		<IR name="conv4_5/linear/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="block_4_5" output_port_id="block_4_5" />
+		<IR name="block_4_5" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="conv4_6/expand/bn/variance/Fused_Add_" output_port_id="conv4_6/expand/bn" />
+		<IR name="conv4_6/expand/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu4_6/expand" output_port_id="conv4_6/expand/bn" />
+		<IR name="relu4_6/expand" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv4_6/dwise/bn/variance/Fused_Add_" output_port_id="conv4_6/dwise/bn" />
+		<IR name="conv4_6/dwise/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu4_6/dwise" output_port_id="conv4_6/dwise/bn" />
+		<IR name="relu4_6/dwise" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv4_6/linear/bn/variance/Fused_Add_" output_port_id="conv4_6/linear/bn" />
+		<IR name="conv4_6/linear/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="block_4_6" output_port_id="block_4_6" />
+		<IR name="block_4_6" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="conv4_7/expand/bn/variance/Fused_Add_" output_port_id="conv4_7/expand/bn" />
+		<IR name="conv4_7/expand/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu4_7/expand" output_port_id="conv4_7/expand/bn" />
+		<IR name="relu4_7/expand" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv4_7/dwise/bn/variance/Fused_Add_" output_port_id="conv4_7/dwise/bn" />
+		<IR name="conv4_7/dwise/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu4_7/dwise" output_port_id="conv4_7/dwise/bn" />
+		<IR name="relu4_7/dwise" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv4_7/linear/bn/variance/Fused_Add_" output_port_id="conv4_7/linear/bn" />
+		<IR name="conv4_7/linear/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="conv5_1/expand/bn/variance/Fused_Add_" output_port_id="conv5_1/expand/bn" />
+		<IR name="conv5_1/expand/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu5_1/expand" output_port_id="conv5_1/expand/bn" />
+		<IR name="relu5_1/expand" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv5_1/dwise/bn/variance/Fused_Add_" output_port_id="conv5_1/dwise/bn" />
+		<IR name="conv5_1/dwise/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu5_1/dwise" output_port_id="conv5_1/dwise/bn" />
+		<IR name="relu5_1/dwise" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv5_1/linear/bn/variance/Fused_Add_" output_port_id="conv5_1/linear/bn" />
+		<IR name="conv5_1/linear/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="block_5_1" output_port_id="block_5_1" />
+		<IR name="block_5_1" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="conv5_2/expand/bn/variance/Fused_Add_" output_port_id="conv5_2/expand/bn" />
+		<IR name="conv5_2/expand/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu5_2/expand" output_port_id="conv5_2/expand/bn" />
+		<IR name="relu5_2/expand" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv5_2/dwise/bn/variance/Fused_Add_" output_port_id="conv5_2/dwise/bn" />
+		<IR name="conv5_2/dwise/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu5_2/dwise" output_port_id="conv5_2/dwise/bn" />
+		<IR name="relu5_2/dwise" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv5_2/linear/bn/variance/Fused_Add_" output_port_id="conv5_2/linear/bn" />
+		<IR name="conv5_2/linear/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="block_5_2" output_port_id="block_5_2" />
+		<IR name="block_5_2" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="conv5_3/expand/bn/variance/Fused_Add_" output_port_id="conv5_3/expand/bn" />
+		<IR name="conv5_3/expand/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu5_3/expand" output_port_id="conv5_3/expand/bn" />
+		<IR name="relu5_3/expand" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv5_3/dwise/bn/variance/Fused_Add_" output_port_id="conv5_3/dwise/bn" />
+		<IR name="conv5_3/dwise/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu5_3/dwise" output_port_id="conv5_3/dwise/bn" />
+		<IR name="relu5_3/dwise" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv5_3/linear/bn/variance/Fused_Add_" output_port_id="conv5_3/linear/bn" />
+		<IR name="conv5_3/linear/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="conv6_1/expand/bn/variance/Fused_Add_" output_port_id="conv6_1/expand/bn" />
+		<IR name="conv6_1/expand/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu6_1/expand" output_port_id="conv6_1/expand/bn" />
+		<IR name="relu6_1/expand" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv6_1/dwise/bn/variance/Fused_Add_" output_port_id="conv6_1/dwise/bn" />
+		<IR name="conv6_1/dwise/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu6_1/dwise" output_port_id="conv6_1/dwise/bn" />
+		<IR name="relu6_1/dwise" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv6_1/linear/bn/variance/Fused_Add_" output_port_id="conv6_1/linear/bn" />
+		<IR name="conv6_1/linear/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="block_6_1" output_port_id="block_6_1" />
+		<IR name="block_6_1" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="conv6_2/expand/bn/variance/Fused_Add_" output_port_id="conv6_2/expand/bn" />
+		<IR name="conv6_2/expand/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu6_2/expand" output_port_id="conv6_2/expand/bn" />
+		<IR name="relu6_2/expand" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv6_2/dwise/bn/variance/Fused_Add_" output_port_id="conv6_2/dwise/bn" />
+		<IR name="conv6_2/dwise/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu6_2/dwise" output_port_id="conv6_2/dwise/bn" />
+		<IR name="relu6_2/dwise" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv6_2/linear/bn/variance/Fused_Add_" output_port_id="conv6_2/linear/bn" />
+		<IR name="conv6_2/linear/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="block_6_2" output_port_id="block_6_2" />
+		<IR name="block_6_2" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="conv6_3/expand/bn/variance/Fused_Add_" output_port_id="conv6_3/expand/bn" />
+		<IR name="conv6_3/expand/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu6_3/expand" output_port_id="conv6_3/expand/bn" />
+		<IR name="relu6_3/expand" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv6_3/dwise/bn/variance/Fused_Add_" output_port_id="conv6_3/dwise/bn" />
+		<IR name="conv6_3/dwise/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="relu6_3/dwise" output_port_id="conv6_3/dwise/bn" />
+		<IR name="relu6_3/dwise" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="conv6_3/linear/bn/variance/Fused_Add_" output_port_id="conv6_3/linear/bn" />
+		<IR name="conv6_3/linear/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="conv6_4/bn/variance/Fused_Add_" output_port_id="conv6_4/bn" />
+		<IR name="conv6_4/bn/variance/Fused_Add_" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="pool6/reduce" output_port_id="pool6" />
+		<IR name="pool6/reduce" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="fc7" output_port_id="fc7" />
+		<IR name="fc7" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="prob" output_port_id="prob" />
+		<IR name="prob" output_port_id="1" />
+	</map>
+</mapping>

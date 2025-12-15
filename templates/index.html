@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧寵物餵食器</title>
+    <style>
+        body { font-family: 'Microsoft JhengHei', sans-serif; background: #eceff1; padding: 20px; }
+        .container { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 100%; max-width: 480px; }
+        
+        /* 影片區 */
+        .video-box img { width: 100%; border-radius: 5px; border: 2px solid #37474f; }
+        
+        /* 數據顯示 */
+        .data-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee; }
+        .data-label { color: #546e7a; font-weight: bold; }
+        .data-val { color: #263238; font-weight: bold; }
+        
+        /* 重點數據 */
+        .big-name { font-size: 2em; color: #0277bd; text-align: center; margin: 10px 0; }
+        .highlight { color: #d81b60; font-size: 1.2em; }
+        
+        /* 補料建議區 (橘色) */
+        .feed-advice { background: #fff3e0; padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 5px solid #ff9800; }
+        .advice-text { font-size: 1.1em; color: #e65100; font-weight: bold; }
+
+        /* 按鈕 */
+        .btn { padding: 10px 20px; border: none; border-radius: 5px; color: white; cursor: pointer; margin: 5px; }
+        .start { background: #43a047; }
+        .stop { background: #e53935; }
+        .upload { background: #1e88e5; }
+        
+        input { padding: 8px; width: 70%; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; }
+        #reg-area { display: none; background: #e3f2fd; padding: 15px; margin-top: 15px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+
+<h1 style="text-align: center; color: #37474f;">🐕 AI 智慧補料系統</h1>
+
+<div class="container">
+    <div class="card">
+        <h3>📹 即時監控</h3>
+        <div class="video-box">
+            <img src="{{ url_for('video_feed') }}">
+        </div>
+        <div style="text-align: center; margin-top: 15px;">
+            <p>系統狀態: <span id="st-text" style="font-weight:bold;">---</span></p>
+            <button class="btn start" onclick="setSys('start')">啟動</button>
+            <button class="btn stop" onclick="setSys('stop')">停止</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>📊 餵食數據分析</h3>
+        
+        <div class="big-name" id="disp-name">---</div>
+        
+        <div class="data-row">
+            <span class="data-label">目前體重:</span>
+            <span class="data-val" id="disp-p-weight">---</span>
+        </div>
+        <div class="data-row">
+            <span class="data-label">AI 判斷品種:</span>
+            <span class="data-val" id="disp-breed">---</span>
+        </div>
+        <div class="data-row">
+            <span class="data-label">應餵目標 (2%):</span>
+            <span class="data-val" id="disp-target">0.000</span> kg
+        </div>
+        <div class="data-row">
+            <span class="data-label">碗內目前:</span>
+            <span class="data-val highlight" id="disp-bowl">0.000</span> kg
+        </div>
+
+        <div class="feed-advice" id="advice-box" style="display: none;">
+            <div>⚠️ 未達標！還差 <span id="disp-missing">0.000</span> kg</div>
+            <div class="advice-text">
+                👉 建議補料：<span id="disp-sec" style="font-size: 1.5em;">0.0</span> 秒
+            </div>
+            <small>(計算基準: 流速 0.05kg/秒)</small>
+        </div>
+        
+        <div id="full-msg" style="text-align: center; color: green; font-weight: bold; margin-top: 15px; display: none;">
+            ✅ 份量充足，無需補料
+        </div>
+
+        <hr>
+        <h3>📝 註冊新寵物</h3>
+        <p>上傳照片分析後，即可輸入名字與體重。</p>
+        <input type="file" id="p-file" accept="image/*">
+        <button class="btn upload" onclick="doUp()">上傳並分析</button>
+        
+        <div id="reg-area">
+            <h4>分析成功！品種: <span id="reg-br" style="color:#1565c0;"></span></h4>
+            <label>名字:</label><br>
+            <input type="text" id="rn" placeholder="例如: 小白"><br>
+            <label>體重 (kg):</label><br>
+            <input type="number" id="rw" step="0.1" placeholder="例如: 5.0"><br>
+            <button class="btn start" style="width: 100%" onclick="doSave()">儲存資料</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let tempBid = null;
+    let tempBname = "";
+
+    // 定時更新狀態
+    setInterval(() => {
+        fetch('/status').then(r => r.json()).then(d => {
+            // 1. 基本資訊更新
+            document.getElementById('st-text').innerText = d.msg;
+            document.getElementById('st-text').style.color = d.running ? "green" : "red";
+            document.getElementById('disp-name').innerText = d.pet_name;
+            document.getElementById('disp-p-weight').innerText = d.pet_weight;
+            document.getElementById('disp-breed').innerText = d.breed_info;
+            document.getElementById('disp-target').innerText = d.target_feed;
+            document.getElementById('disp-bowl').innerText = d.weight;
+
+            // 2. 判斷是否顯示「補料建議」
+            // 條件：系統運作中 + 有偵測到狗 (目標>0)
+            if (d.running && parseFloat(d.target_feed) > 0) {
+                let missing = parseFloat(d.missing_weight);
+                
+                if (missing > 0) {
+                    // 需要補料
+                    document.getElementById('advice-box').style.display = 'block';
+                    document.getElementById('full-msg').style.display = 'none';
+                    document.getElementById('disp-missing').innerText = d.missing_weight;
+                    document.getElementById('disp-sec').innerText = d.supplement_seconds;
+                } else {
+                    // 吃飽了
+                    document.getElementById('advice-box').style.display = 'none';
+                    document.getElementById('full-msg').style.display = 'block';
+                }
+            } else {
+                // 沒開系統或沒狗
+                document.getElementById('advice-box').style.display = 'none';
+                document.getElementById('full-msg').style.display = 'none';
+            }
+        });
+    }, 1000);
+
+    // 開關系統
+    function setSys(a) { 
+        let fd = new FormData(); fd.append('action', a); 
+        fetch('/set_system', {method:'POST', body:fd}); 
+    }
+
+    // 上傳照片
+    function doUp() {
+        let f = document.getElementById('p-file').files[0];
+        if(!f) return alert("請先選擇照片檔案！");
+        
+        let fd = new FormData(); fd.append('photo', f);
+        fetch('/analyze_photo', {method:'POST', body:fd}).then(r=>r.json()).then(d=>{
+            if(d.success){
+                document.getElementById('reg-area').style.display='block';
+                document.getElementById('reg-br').innerText = d.breed_name;
+                tempBid = d.breed_id; tempBname = d.breed_name;
+                if(!d.is_dog) alert("提醒: 這張照片 AI 覺得不像狗喔！");
+            } else {
+                alert("錯誤: " + d.msg);
+            }
+        });
+    }
+
+    // 儲存資料
+    function doSave() {
+        let n = document.getElementById('rn').value;
+        let w = document.getElementById('rw').value;
+        if(!n||!w) return alert("名字和體重都要填寫！");
+        
+        let fd = new FormData(); fd.append('name',n); fd.append('weight',w);
+        fd.append('breed_id', tempBid); fd.append('breed_name', tempBname);
+        
+        fetch('/save_pet', {method:'POST', body:fd}).then(r=>r.json()).then(d=>{
+            if(d.success) { 
+                alert("註冊成功！"); 
+                document.getElementById('reg-area').style.display='none'; 
+                document.getElementById('rn').value = '';
+                document.getElementById('rw').value = '';
+                document.getElementById('p-file').value = '';
+            } else {
+                alert("儲存失敗: " + d.msg);
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
